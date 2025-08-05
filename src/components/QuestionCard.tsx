@@ -40,9 +40,10 @@ export default function QuestionCard({
         return;
       }
       
-      // Si ya hay "ninguna de las anteriores" seleccionada, no permitir otras opciones
+      // Si ya hay "ninguna de las anteriores" seleccionada, la quitamos y agregamos la nueva opción
       const hasNoneSelected = arr.some(v => v.toLowerCase().includes("ninguna") || v.toLowerCase().includes("ninguno"));
       if (hasNoneSelected) {
+        onChange([opt]);
         return;
       }
       

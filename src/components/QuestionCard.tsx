@@ -27,15 +27,27 @@ export default function QuestionCard({
   const handleOptionChange = (opt: string) => {
     if (type === "multiple") {
       const arr = Array.isArray(value) ? value : [];
+      
+      // Si la opción seleccionada es "ninguna de las anteriores"
+      if (opt.toLowerCase().includes("ninguna") || opt.toLowerCase().includes("ninguno")) {
+        onChange([opt]);
+        return;
+      }
+      
+      // Si ya está seleccionada, la quitamos
       if (arr.includes(opt)) {
         onChange(arr.filter((v) => v !== opt));
-      } else {
-        if (opt.toLowerCase().includes("ninguno")) {
-          onChange([opt]);
-        } else {
-          onChange(arr.filter((v) => !v.toLowerCase().includes("ninguno")).concat(opt));
-        }
+        return;
       }
+      
+      // Si ya hay "ninguna de las anteriores" seleccionada, no permitir otras opciones
+      const hasNoneSelected = arr.some(v => v.toLowerCase().includes("ninguna") || v.toLowerCase().includes("ninguno"));
+      if (hasNoneSelected) {
+        return;
+      }
+      
+      // Agregar la nueva opción
+      onChange([...arr, opt]);
     } else {
       onChange(opt);
     }

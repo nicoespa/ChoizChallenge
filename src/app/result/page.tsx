@@ -79,7 +79,8 @@ export default function ResultPage(){
         }
     });
 
-    const handleSelect = () => {        const selectedProduct = recommendations[currentRecommendation].product;
+    const handleSelect = () => {
+        const selectedProduct = recommendations[currentRecommendation].product;
         const productParam = encodeURIComponent(JSON.stringify(selectedProduct));
         router.push(`/checkout?product=${productParam}`);
     };

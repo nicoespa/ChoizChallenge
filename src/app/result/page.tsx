@@ -7,7 +7,13 @@ import RecommendationCard from "@/components/RecommendationCard";
 export default function ResultPage(){
     const {answers} = useFormContext();
     const router = useRouter();
-    const [faqs, setFaqs] = useState<any[]>([]);
+    const [faqs, setFaqs] = useState<Array<{
+        id?: string;
+        question?: string;
+        pregunta?: string;
+        answer?: string;
+        respuesta?: string;
+    }>>([]);
     const [currentRecommendation, setCurrentRecommendation] = useState(0);
 
     useEffect(() => {
@@ -112,14 +118,10 @@ export default function ResultPage(){
 
     return (
         <RecommendationCard
-            recommendationNumber={currentRecommendation + 1}
             product={currentRec.product}
             faqs={faqs}
             onSelect={handleSelect}
             onPrev={handlePrev}
-            onNext={handleNext}
-            hasPrev={currentRecommendation > 0}
-            hasNext={currentRecommendation < recommendations.length - 1}
         />
     );
 }

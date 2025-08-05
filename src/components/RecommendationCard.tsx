@@ -2,28 +2,26 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 interface RecommendationCardProps {
-  recommendationNumber: number;
   product: {
     nombre: string;
     ingredientes: string;
   };
-  faqs?: any[];
+  faqs?: Array<{
+    id?: string;
+    question?: string;
+    pregunta?: string;
+    answer?: string;
+    respuesta?: string;
+  }>;
   onSelect: () => void;
   onPrev?: () => void;
-  onNext?: () => void;
-  hasNext?: boolean;
-  hasPrev?: boolean;
 }
 
 export default function RecommendationCard({
-  recommendationNumber,
   product,
   faqs = [],
   onSelect,
   onPrev,
-  onNext,
-  hasNext = false,
-  hasPrev = false,
 }: RecommendationCardProps) {
   
   const [expandedFaqs, setExpandedFaqs] = useState<number[]>([]);

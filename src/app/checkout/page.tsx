@@ -8,7 +8,10 @@ export default function CheckoutPage() {
     const { answers } = useFormContext();
     const router = useRouter();
     const searchParams = useSearchParams();
-    const [selectedProduct, setSelectedProduct] = useState<any>(null);
+    const [selectedProduct, setSelectedProduct] = useState<{
+        nombre: string;
+        ingredientes: string;
+    } | null>(null);
 
     const getQuestionText = (questionId: string) => {
         const question = questions.find(q => q.id === questionId);

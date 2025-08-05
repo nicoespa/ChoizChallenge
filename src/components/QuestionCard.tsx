@@ -8,7 +8,6 @@ interface QuestionCardProps {
   onChange: (value: string | string[]) => void;
   otherValue?: string;
   onOtherChange?: (value: string) => void;
-  disabled?: boolean;
   helper?: string;
 }
 
@@ -20,7 +19,6 @@ export default function QuestionCard({
   onChange,
   otherValue,
   onOtherChange,
-  disabled,
   helper,
 }: QuestionCardProps) {
   const isSelected = (opt: string) =>

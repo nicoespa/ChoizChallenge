@@ -27,13 +27,17 @@ function CheckoutContent() {
 
     useEffect(() => {
         const productParam = searchParams.get('product');
+        console.log('Product param received:', productParam);
         if (productParam) {
             try {
                 const product = JSON.parse(decodeURIComponent(productParam));
+                console.log('Parsed product:', product);
                 setSelectedProduct(product);
             } catch (error) {
                 console.error('Error parsing product:', error);
             }
+        } else {
+            console.log('No product param found');
         }
     }, [searchParams]);
 

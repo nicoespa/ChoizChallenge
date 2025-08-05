@@ -88,7 +88,7 @@ export default function ResultPage(){
 
     const handleSelect = () => {
         const selectedProduct = recommendations[currentRecommendation].product;
-        const productParam = encodeURIComponent(JSON.stringify(selectedProduct));
+        const productParam = btoa(JSON.stringify(selectedProduct));
         console.log('Selected product:', selectedProduct);
         console.log('Product param:', productParam);
         router.push(`/checkout?product=${productParam}`);

@@ -30,7 +30,7 @@ function CheckoutContent() {
         console.log('Product param received:', productParam);
         if (productParam) {
             try {
-                const product = JSON.parse(decodeURIComponent(productParam));
+                const product = JSON.parse(atob(productParam));
                 console.log('Parsed product:', product);
                 setSelectedProduct(product);
             } catch (error) {

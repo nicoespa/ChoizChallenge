@@ -63,11 +63,18 @@ export default function ResultPage(){
                 ingredientes: "Dutasterida 0.1% + Minoxidil 5% + Tretinoína 1% + Hidrocortisona 1%"
             }
         });
-    } else {
+    } else if (condiciones.length === 0 || condiciones.includes("No, ninguna de las anteriores")){
         recommendations.push({
             product: {
                 nombre: "Minoxidil® Cápsulas",
                 ingredientes: "Minoxidil 2.5 mg + Biotina 2.5 mg"
+            }
+        });
+    } else {
+        recommendations.push({
+            product: {
+                nombre: "DUTAXIDIL® Cápsulas",
+                ingredientes: "Dutasterida 0.5 mg + Minoxidil 2.5 mg + Biotina 2.5 mg"
             }
         });
     }

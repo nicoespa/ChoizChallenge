@@ -2,9 +2,9 @@
 import { useFormContext } from "@/context/FormContext";
 import { useRouter, useSearchParams } from "next/navigation";
 import { questions } from "@/lib/questions";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
-export default function CheckoutPage() {
+function CheckoutContent() {
     const { answers } = useFormContext();
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -132,5 +132,19 @@ export default function CheckoutPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function CheckoutPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="text-center">
+                    <p className="text-gray-600">Cargando...</p>
+                </div>
+            </div>
+        }>
+            <CheckoutContent />
+        </Suspense>
     );
 } 
